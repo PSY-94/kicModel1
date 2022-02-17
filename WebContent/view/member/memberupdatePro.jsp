@@ -1,3 +1,4 @@
+<%@page import="jdk.internal.misc.FileSystemOption"%>
 <%@page import="model.Member"%>
 <%@page import="service.MemberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -26,15 +27,21 @@ location.href="<%=request.getContextPath()%>/view/member/loginForm.jsp";
 String email = request.getParameter("email");
 String tel = request.getParameter("tel");
 String pass = request.getParameter("pass");
+
+String picture = request.getParameter("picture");	//1
+
 MemberDao md = new MemberDao();
 Member mem = md.selectOne(login);
 
 // member에 email, tel을 저장
 mem.setEmail(email);
 mem.setTel(tel);
+mem.setPicture(picture);	//2
 
+System.out.println(mem);	//3 수정 된 이미지 이름 저장
 
 if (mem.getPass().equals(pass)) {
+	
 	num = md.memberUpdate(mem);
 	msg = "회원 정보가 수정 되었습니다.";
 	url = request.getContextPath()+"/view/main.jsp";
