@@ -1,4 +1,3 @@
-<%@page import="jdk.internal.misc.FileSystemOption"%>
 <%@page import="model.Member"%>
 <%@page import="service.MemberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
